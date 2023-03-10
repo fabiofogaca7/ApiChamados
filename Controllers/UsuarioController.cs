@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApiTest.Domain.Entities;
+using WebApiTest.Domain.Interfaces.Services;
 
 namespace WebApiTest.Controllers
 {
@@ -7,6 +9,13 @@ namespace WebApiTest.Controllers
     public class UsuarioController : Controller
     {
         List<String> usuarios = new List<String>();
+
+        private readonly IChamadoService _chamadoService;
+
+        public UsuarioController(IChamadoService chamadoService)
+        {
+            _chamadoService = chamadoService;
+        }
 
         [HttpGet]
         [Route("get-usuarios")]
@@ -18,6 +27,14 @@ namespace WebApiTest.Controllers
             usuarios.Add("vaguinho");
 
             return Ok(usuarios);
+        }
+
+        [HttpPost]
+        [Route("cadastro")]
+        public IActionResult Cadastro(Chamado chamado)
+        {
+            _chamadoService.CadastrarChamado(chamado);
+            return Ok(chamado);
         }
 
         [HttpDelete]

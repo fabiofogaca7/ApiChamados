@@ -2,13 +2,13 @@
 {
     public class Chamado
     {
-        public int Id { get; set; }
-        public int numeroChamado { get; set; }
+        //public int Id { get; set; }
+        public int NumeroChamado { get; set; }
         public string Descricao { get; set; }
         public DateTime DataAbertura { get; set; }
         public DateTime DataEncerramento { get; set; }
-        public Cliente Cliente { get; set; }
-        public int ClienteId { get; set; }
+        //public Cliente Cliente { get; set; }
+       //public int ClienteId { get; set; }
 
 
     }
